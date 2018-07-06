@@ -1,7 +1,15 @@
 # LiveSplit Client Plugin
 
 This LiveSplit plugin is intended for speedrunners with a 2 PC streaming setup that want their splits to display IGT or RTA no-load times.
-This is to be used with the LiveSplit server plugin which can be found here https://github.com/LiveSplit/LiveSplit.Server/releases
+This is to be used with the LiveSplit server plugin.
+
+PREREQUISITES
+
+LiveSplit: https://github.com/LiveSplit/LiveSplit/releases
+
+LiveSplit Server: https://github.com/LiveSplit/LiveSplit.Server/releases
+
+LiveSplit Client: https://github.com/Villhellm/LiveSplitClientPlugin/releases
 
 SETUP
 
@@ -34,6 +42,8 @@ When launching the Gaming PC timer make sure to start the server. This will not 
 
 TROUBLESHOOTING
 
-After making sure all steps in the setup were followed, make sure there is not something else controlling the timer on the Streaming PC. Make sure there are no game time or autosplitter plugins installed.
+After making sure all steps in the setup were followed, make sure there is not something else controlling the timer on the Streaming PC. 
+
+Make sure there are no game time or autosplitter plugins installed.
 
 If it says "Connected" in the settings menu but the times don't match, make sure the Streaming PC "Compare Against" is set to "Game Time" and that the timer is started.
