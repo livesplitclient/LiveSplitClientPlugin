@@ -27,10 +27,13 @@ All actual splits should be saved on the Streaming PC. The gaming side is just f
 NOTES
 
 To install plugins just add the .dll files to the "Components" folder in the LiveSplit folder.
+
 Make sure to save the layouts after you set everything up so you don't have to do it every time you launch.
+
 When launching the Gaming PC timer make sure to start the server. This will not happen automatically, unfortunately.
 
 TROUBLESHOOTING
 
 After making sure all steps in the setup were followed, make sure there is not something else controlling the timer on the Streaming PC. Make sure there are no game time or autosplitter plugins installed.
+
 If it says "Connected" in the settings menu but the times don't match, make sure the Streaming PC "Compare Against" is set to "Game Time" and that the timer is started.
