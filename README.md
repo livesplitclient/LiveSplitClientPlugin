@@ -8,7 +8,7 @@ SETUP
 GAMING PC:
 
 1. Download LiveSplit and the LiveSplit server plugin.
-2. Add the plugin to your layout (Right-click > Edit Layout > + > Control > LiveSplit Server)
+2. Add the plugin to your layout (Right-click > Edit Layout > + > Control > LiveSplit Server) Save all settings.
 3. Add IGT or RTA no-load plugin for whatever game you are playing and set the timing method to "Game Time" (Right-click > Compare Against > Game Time)
 4. Start the server (Right-click > Controls > Start Server) and start the timer (Right-click > Controls > Start)
 
@@ -16,8 +16,8 @@ STREAMING PC:
 
 1. Download LiveSplit and the Client plugin
 2. Add the plugin to your layout (Right-click > Edit Layout > + > Timer > Live Split Client)
-3. Set the IP address of the server you set up (Right-click > Edit Layout > Layout Settings > LiveSplit Client tab > IP address)
-4. Press the "Attempt Connection" button. It should say "Connected" under server status. If not make sure your IP address and port are correct and that the server is running.
+3. Set the IP address of the server you set up (Layout Settings > LiveSplit Client tab > IP address)
+4. Press the "Attempt Connection" button. It should say "Connected" under server status. If not make sure your IP address and port are correct and that the server is running. Save all settings.
 5. Set the timing method to "Game Time" (Right-click > Compare Against > Game Time) and start the timer (Right-click > Controls > Start)
 
 Your timers are now synced. Any changes on the Gaming PC timer should be reflected on the Streaming PC timer.
