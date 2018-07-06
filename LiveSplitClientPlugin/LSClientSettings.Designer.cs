@@ -76,7 +76,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(10, 93);
+			this.label3.Location = new System.Drawing.Point(10, 125);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(84, 13);
 			this.label3.TabIndex = 4;
@@ -85,7 +85,7 @@
 			// lblServerStatus
 			// 
 			this.lblServerStatus.AutoSize = true;
-			this.lblServerStatus.Location = new System.Drawing.Point(16, 115);
+			this.lblServerStatus.Location = new System.Drawing.Point(16, 147);
 			this.lblServerStatus.Name = "lblServerStatus";
 			this.lblServerStatus.Size = new System.Drawing.Size(78, 13);
 			this.lblServerStatus.TabIndex = 5;
@@ -93,7 +93,7 @@
 			// 
 			// btnConnect
 			// 
-			this.btnConnect.Location = new System.Drawing.Point(13, 153);
+			this.btnConnect.Location = new System.Drawing.Point(13, 185);
 			this.btnConnect.Name = "btnConnect";
 			this.btnConnect.Size = new System.Drawing.Size(122, 23);
 			this.btnConnect.TabIndex = 6;
@@ -104,7 +104,7 @@
 			// cbAutosplit
 			// 
 			this.cbAutosplit.AutoSize = true;
-			this.cbAutosplit.Location = new System.Drawing.Point(13, 194);
+			this.cbAutosplit.Location = new System.Drawing.Point(125, 85);
 			this.cbAutosplit.Name = "cbAutosplit";
 			this.cbAutosplit.Size = new System.Drawing.Size(102, 17);
 			this.cbAutosplit.TabIndex = 7;

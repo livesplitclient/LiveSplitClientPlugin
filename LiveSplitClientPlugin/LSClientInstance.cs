@@ -42,6 +42,7 @@ namespace LiveSplit.ClientPlugin
 			SplitIndex = 0;
 			start = DateTime.Now;
 			CreateConfiguration();
+			VerifyConfig();
 			ReadConfiguration();
 			ConnectToServer();
 		}
@@ -142,23 +143,45 @@ namespace LiveSplit.ClientPlugin
 		{
 			if (File.Exists(ConfigurationFile))
 			{
-				XDocument Xml = XDocument.Load(ConfigurationFile);
-				XElement ipElement = Xml.Element("Configs").Element("IPAddress");
+				XDocument xml = XDocument.Load(ConfigurationFile);
+				XElement ipElement = xml.Element("Configs").Element("IPAddress");
 				IPAddress = ipElement.Value;
-				XElement portElement = Xml.Element("Configs").Element("Port");
+				XElement portElement = xml.Element("Configs").Element("Port");
 				Port = int.Parse(portElement.Value);
-				XElement autoSplitElement = Xml.Element("Configs").Element("Autosplit");
+				XElement autoSplitElement = xml.Element("Configs").Element("Autosplit");
 				Autosplit = bool.Parse(autoSplitElement.Value);
 			}
 		}
 
+
+		private void VerifyConfig()
+		{
+			XDocument xml = XDocument.Load(ConfigurationFile);
+			XElement ipElement = xml.Element("Configs").Element("IPAddress");
+			XElement portElement = xml.Element("Configs").Element("Port");
+			XElement autoSplitElement = xml.Element("Configs").Element("Autosplit");
+			if (ipElement == null)
+			{
+				xml.Descendants("Configs").FirstOrDefault().Add(new XElement("IPAddress","0.0.0.0"));
+			}
+			if (portElement == null)
+			{
+				xml.Descendants("Configs").FirstOrDefault().Add(new XElement("Port", "16834"));
+			}
+			if (autoSplitElement == null)
+			{
+				xml.Descendants("Configs").FirstOrDefault().Add(new XElement("Autosplit", "False"));
+			}
+			xml.Save(ConfigurationFile);
+		}
+
 		public void SaveConfiguration(string ip, string port, bool autoSplit)
 		{
-			XDocument Xml = XDocument.Load(ConfigurationFile);
-			Xml.Element("Configs").Element("IPAddress").Value = ip;
-			Xml.Element("Configs").Element("Port").Value = port.ToString();
-			Xml.Element("Configs").Element("Autosplit").Value = autoSplit.ToString();
-			Xml.Save(ConfigurationFile);
+			XDocument xml = XDocument.Load(ConfigurationFile);
+			xml.Element("Configs").Element("IPAddress").Value = ip;
+			xml.Element("Configs").Element("Port").Value = port.ToString();
+			xml.Element("Configs").Element("Autosplit").Value = autoSplit.ToString();
+			xml.Save(ConfigurationFile);
 			ReadConfiguration();
 		}
 
