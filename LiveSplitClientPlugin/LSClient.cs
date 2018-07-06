@@ -66,6 +66,11 @@ namespace LiveSplit.ClientPlugin
 				{
 					Model.Split();
 				}
+				if(instance.SplitIndex == 0 && state.CurrentSplitIndex > 0)
+				{
+					Model.Reset();
+					Model.Start();
+				}
 			}	
 		}
 	}
