@@ -10,7 +10,7 @@ using System.Windows.Threading;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace LiveSplit.LiveSplitClientPlugin
+namespace LiveSplit.ClientPlugin
 {
 	public class LSClientInstance
 	{
@@ -21,24 +21,25 @@ namespace LiveSplit.LiveSplitClientPlugin
 		public static string AppDataRoamingPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\LiveSplitClient";
 		public static string ConfigurationFile = AppDataRoamingPath + @"\Config.xml";
 
+		public string ServerReturnData { get; set; }
+		public string ServerStatus { get; set; }
 		public string IPAddress { get; set; }
 		public int Port { get; set; }
 		public int IGT
 		{
 			get
 			{
-				return TimeStringToMili(serverReturnData);
+				return TimeStringToMili(ServerReturnData);
 			}
 		}
-		public string serverReturnData { get; set; }
-
+	
 		public LSClientInstance()
 		{
 			t = new DispatcherTimer(new TimeSpan(0, 0, 0, 0, 10), DispatcherPriority.Background, t_Tick, Dispatcher.CurrentDispatcher);
+			start = DateTime.Now;
 			CreateConfiguration();
 			ReadConfiguration();
 			ConnectToServer();
-			start = DateTime.Now;
 		}
 
 		private void t_Tick(object sender, EventArgs e)
@@ -49,11 +50,11 @@ namespace LiveSplit.LiveSplitClientPlugin
 				StreamReader sr = new StreamReader(client.GetStream());
 				sw.WriteLine("getcurrenttime");
 				sw.Flush();
-				serverReturnData = sr.ReadLine();
+				ServerReturnData = sr.ReadLine();
 			}
 			catch
 			{
-
+				ServerStatus = "Error";
 			}
 		}
 
@@ -147,7 +148,7 @@ namespace LiveSplit.LiveSplitClientPlugin
 			ReadConfiguration();
 		}
 
-		public void ConnectToServer()
+		public async Task ConnectToServer()
 		{
 			try
 			{
@@ -155,13 +156,14 @@ namespace LiveSplit.LiveSplitClientPlugin
 				{
 					client.Close();
 				}
-				client = new TcpClient(IPAddress, Port);
-				serverReturnData = "Connected";
+				client = new TcpClient();
+				await client.ConnectAsync(IPAddress, Port);
+				ServerStatus = "Connected";
 				t.IsEnabled = true;
 			}
 			catch
 			{
-				serverReturnData = "Connection error, please restart livesplit server";
+				ServerStatus = "Connection Error\nPlease check settings and restart LiveSplit server";
 				t.IsEnabled = false;
 			}
 		}

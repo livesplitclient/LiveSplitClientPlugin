@@ -1,4 +1,4 @@
-﻿namespace LiveSplit.LiveSplitClientPlugin
+﻿namespace LiveSplit.ClientPlugin
 {
 	partial class LSClientSettings
 	{
@@ -54,34 +54,37 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(27, 36);
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(10, 36);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(92, 13);
+			this.label1.Size = new System.Drawing.Size(109, 13);
 			this.label1.TabIndex = 2;
 			this.label1.Text = "Server IP Address";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(93, 62);
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(89, 62);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(26, 13);
+			this.label2.Size = new System.Drawing.Size(30, 13);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Port";
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(27, 93);
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Location = new System.Drawing.Point(10, 93);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(71, 13);
+			this.label3.Size = new System.Drawing.Size(84, 13);
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Server Status";
 			// 
 			// lblServerStatus
 			// 
 			this.lblServerStatus.AutoSize = true;
-			this.lblServerStatus.Location = new System.Drawing.Point(27, 116);
+			this.lblServerStatus.Location = new System.Drawing.Point(16, 115);
 			this.lblServerStatus.Name = "lblServerStatus";
 			this.lblServerStatus.Size = new System.Drawing.Size(78, 13);
 			this.lblServerStatus.TabIndex = 5;
@@ -89,7 +92,7 @@
 			// 
 			// btnConnect
 			// 
-			this.btnConnect.Location = new System.Drawing.Point(30, 151);
+			this.btnConnect.Location = new System.Drawing.Point(13, 153);
 			this.btnConnect.Name = "btnConnect";
 			this.btnConnect.Size = new System.Drawing.Size(122, 23);
 			this.btnConnect.TabIndex = 6;

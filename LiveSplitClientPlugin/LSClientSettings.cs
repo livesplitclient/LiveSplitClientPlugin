@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Threading;
 
-namespace LiveSplit.LiveSplitClientPlugin
+namespace LiveSplit.ClientPlugin
 {
 	public partial class LSClientSettings : UserControl
 	{
@@ -22,7 +22,7 @@ namespace LiveSplit.LiveSplitClientPlugin
 			this.instance = instance;
 			txtIPAddress.Text = instance.IPAddress;
 			txtPort.Text = instance.Port.ToString();
-			lblServerStatus.Text = instance.serverReturnData;
+			lblServerStatus.Text = instance.ServerStatus;
 		}
 
 		public XmlNode GetSettings(XmlDocument document)
@@ -45,12 +45,12 @@ namespace LiveSplit.LiveSplitClientPlugin
 			return str;
 		}
 
-		private void btnConnect_Click(object sender, EventArgs e)
+		private async void btnConnect_Click(object sender, EventArgs e)
 		{
 			instance.SaveConfiguration(txtIPAddress.Text, txtPort.Text);
-			instance.ConnectToServer();
-			Thread.Sleep(100);
-			lblServerStatus.Text = instance.serverReturnData;
+			lblServerStatus.Text = "Attempting connection...";
+			await instance.ConnectToServer();
+			lblServerStatus.Text = instance.ServerStatus;
 		}
 	}
 }

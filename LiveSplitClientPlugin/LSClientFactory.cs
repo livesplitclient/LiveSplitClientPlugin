@@ -1,11 +1,11 @@
 ﻿using LiveSplit.Model;
 using LiveSplit.UI.Components;
-using LiveSplit.LiveSplitClientPlugin;
+using LiveSplit.ClientPlugin;
 using System;
 using System.Reflection;
 
 [assembly: ComponentFactory(typeof(LSClientFactory))]
-namespace LiveSplit.LiveSplitClientPlugin
+namespace LiveSplit.ClientPlugin
 {
 	internal class LSClientFactory : IComponentFactory
 	{

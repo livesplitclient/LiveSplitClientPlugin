@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using System.Xml;
 
-namespace LiveSplit.LiveSplitClientPlugin
+namespace LiveSplit.ClientPlugin
 {
 	public class LSClient : LogicComponent
 	{
