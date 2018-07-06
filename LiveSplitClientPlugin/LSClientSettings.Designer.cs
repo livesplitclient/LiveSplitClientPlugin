@@ -35,6 +35,7 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.lblServerStatus = new System.Windows.Forms.Label();
 			this.btnConnect = new System.Windows.Forms.Button();
+			this.cbAutosplit = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// txtIPAddress
@@ -100,10 +101,22 @@
 			this.btnConnect.UseVisualStyleBackColor = true;
 			this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
 			// 
+			// cbAutosplit
+			// 
+			this.cbAutosplit.AutoSize = true;
+			this.cbAutosplit.Location = new System.Drawing.Point(13, 194);
+			this.cbAutosplit.Name = "cbAutosplit";
+			this.cbAutosplit.Size = new System.Drawing.Size(102, 17);
+			this.cbAutosplit.TabIndex = 7;
+			this.cbAutosplit.Text = "Enable Autosplit";
+			this.cbAutosplit.UseVisualStyleBackColor = true;
+			this.cbAutosplit.CheckedChanged += new System.EventHandler(this.cbAutosplit_CheckedChanged);
+			// 
 			// LSClientSettings
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.cbAutosplit);
 			this.Controls.Add(this.btnConnect);
 			this.Controls.Add(this.lblServerStatus);
 			this.Controls.Add(this.label3);
@@ -127,5 +140,6 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label lblServerStatus;
 		private System.Windows.Forms.Button btnConnect;
+		private System.Windows.Forms.CheckBox cbAutosplit;
 	}
 }

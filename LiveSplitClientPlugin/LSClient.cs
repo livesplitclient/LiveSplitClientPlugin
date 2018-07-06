@@ -18,11 +18,12 @@ namespace LiveSplit.ClientPlugin
 		private LiveSplitState state;
 		private LSClientSettings settings;
 		private LSClientInstance instance;
-
+		protected ITimerModel Model { get; set; }
 		public int IGT { get; set; }
 
 		public LSClient(LiveSplitState state)
 		{
+			Model = new TimerModel() { CurrentState = state };
 			instance = new LSClientInstance();
 			settings = new LSClientSettings(instance);
 
@@ -53,6 +54,19 @@ namespace LiveSplit.ClientPlugin
 		public override void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
 		{
 			state.SetGameTime(new TimeSpan(0,0,0,0, instance.IGT));
+			if (instance.Autosplit)
+			{
+				int difference = instance.SplitIndex - state.CurrentSplitIndex;
+				while(difference > 1)
+				{
+					Model.SkipSplit();
+					difference--;
+				}
+				if(difference == 1)
+				{
+					Model.Split();
+				}
+			}	
 		}
 	}
 }

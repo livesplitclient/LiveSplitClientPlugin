@@ -25,6 +25,9 @@ namespace LiveSplit.ClientPlugin
 		public string ServerStatus { get; set; }
 		public string IPAddress { get; set; }
 		public int Port { get; set; }
+		public bool Autosplit { get; set; }
+		public int SplitIndex { get; set; }
+
 		public int IGT
 		{
 			get
@@ -36,6 +39,7 @@ namespace LiveSplit.ClientPlugin
 		public LSClientInstance()
 		{
 			t = new DispatcherTimer(new TimeSpan(0, 0, 0, 0, 10), DispatcherPriority.Background, t_Tick, Dispatcher.CurrentDispatcher);
+			SplitIndex = 0;
 			start = DateTime.Now;
 			CreateConfiguration();
 			ReadConfiguration();
@@ -51,6 +55,9 @@ namespace LiveSplit.ClientPlugin
 				sw.WriteLine("getcurrenttime");
 				sw.Flush();
 				ServerReturnData = sr.ReadLine();
+				sw.WriteLine("getsplitindex");
+				sw.Flush();
+				SplitIndex = int.Parse(sr.ReadLine());
 			}
 			catch
 			{
@@ -122,6 +129,10 @@ namespace LiveSplit.ClientPlugin
 				Writer.WriteString("16834");
 				Writer.WriteEndElement();
 
+				Writer.WriteStartElement("Autosplit");
+				Writer.WriteString("False");
+				Writer.WriteEndElement();
+
 				Writer.WriteEndElement();
 				Writer.Close();
 			}
@@ -136,14 +147,17 @@ namespace LiveSplit.ClientPlugin
 				IPAddress = ipElement.Value;
 				XElement portElement = Xml.Element("Configs").Element("Port");
 				Port = int.Parse(portElement.Value);
+				XElement autoSplitElement = Xml.Element("Configs").Element("Autosplit");
+				Autosplit = bool.Parse(autoSplitElement.Value);
 			}
 		}
 
-		public void SaveConfiguration(string ip, string port)
+		public void SaveConfiguration(string ip, string port, bool autoSplit)
 		{
 			XDocument Xml = XDocument.Load(ConfigurationFile);
 			Xml.Element("Configs").Element("IPAddress").Value = ip;
 			Xml.Element("Configs").Element("Port").Value = port.ToString();
+			Xml.Element("Configs").Element("Autosplit").Value = autoSplit.ToString();
 			Xml.Save(ConfigurationFile);
 			ReadConfiguration();
 		}

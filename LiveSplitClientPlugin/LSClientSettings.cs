@@ -28,8 +28,6 @@ namespace LiveSplit.ClientPlugin
 		public XmlNode GetSettings(XmlDocument document)
 		{
 			XmlElement settingsNode = document.CreateElement("Settings");
-			settingsNode.AppendChild(ToElement(document, "IPAddress", txtIPAddress.Text));
-			settingsNode.AppendChild(ToElement(document, "Port", txtPort.Text));
 			return settingsNode;
 		}
 
@@ -47,10 +45,15 @@ namespace LiveSplit.ClientPlugin
 
 		private async void btnConnect_Click(object sender, EventArgs e)
 		{
-			instance.SaveConfiguration(txtIPAddress.Text, txtPort.Text);
+			instance.SaveConfiguration(txtIPAddress.Text, txtPort.Text, cbAutosplit.Checked);
 			lblServerStatus.Text = "Attempting connection...";
 			await instance.ConnectToServer();
 			lblServerStatus.Text = instance.ServerStatus;
+		}
+
+		private void cbAutosplit_CheckedChanged(object sender, EventArgs e)
+		{
+			instance.SaveConfiguration(txtIPAddress.Text, txtPort.Text, cbAutosplit.Checked);
 		}
 	}
 }
